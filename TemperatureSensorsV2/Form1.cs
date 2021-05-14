@@ -30,8 +30,8 @@ namespace TemperatureSensorsV2
         private float[] DataBuffer = new float[5]; // array to hold  the temperatures
         public int LowChan = 0;
         public int HighChan = 5;
-        public int minScaled = 0;
-        public int maxScaled = 0;
+        public int minScaled = 60;
+        public int maxScaled = 90;
         public int readDuration;
         public int chartXValueCounter = 0;
         public int resizeCounter = 0;
@@ -171,7 +171,6 @@ namespace TemperatureSensorsV2
                         {
                             calibrateLED.OnText = "Time remaining: " + 4 + " second(s)";
                             calibrateArrayTimer.Interval = 1000;
-                            Debug.WriteLine("fast");
                         }
                         else
                         {
@@ -451,7 +450,8 @@ namespace TemperatureSensorsV2
                         readArrayTimer.Enabled = true;
                         readLED.Value = true;
                         isReading = true;
-
+                    chart1.ChartAreas[0].AxisY.Minimum = minScaled;
+                    chart1.ChartAreas[0].AxisY.Maximum = maxScaled;
                     } //end else
                 } //end else
             }
@@ -519,8 +519,8 @@ namespace TemperatureSensorsV2
             chart.AxisX.LabelStyle.IsEndLabelVisible = true;
 
             chart.AxisX.Minimum = 0;
-            chart.AxisY.Minimum = 60;
-            chart.AxisY.Maximum = 90;
+            chart.AxisY.Minimum = minScaled;
+            chart.AxisY.Maximum = maxScaled;
 
             chart.AxisX.Interval = 1;
             chart.AxisY.Interval = 1;
@@ -579,7 +579,6 @@ namespace TemperatureSensorsV2
 
            tempLow = (float)Math.Round(Convert.ToDouble(tempLow));
            tempHigh = (float)Math.Round(Convert.ToDouble(tempHigh));
-            Debug.WriteLine(tempHigh-tempLow);
 
             if((tempHigh-tempLow) < 2  )
             {
@@ -874,7 +873,7 @@ namespace TemperatureSensorsV2
                 else
                 {
                     //Prevents overload by only showing the latest 20 seconds of data
-                    if(chartXValueCounter+1 >=20)
+                    if(chartXValueCounter >=20)
                     {
                         chart.AxisX.Minimum = chartXValueCounter - 20;
                     }
@@ -889,23 +888,20 @@ namespace TemperatureSensorsV2
 
                     readLED.OnText = "Reading for " + (readDuration - chartXValueCounter) + " seconds";
 
-
                     chart1.Series[0].Points.AddXY(chartXValueCounter, DataBuffer[0]); //infrared
 
-                    chart1.Series[1].Points.AddXY(chartXValueCounter, DataBuffer[1]); //orange
+                    chart1.Series[1].Points.AddXY(chartXValueCounter, DataBuffer[1]); //red
 
                     chart1.Series[2].Points.AddXY(chartXValueCounter, DataBuffer[2]); //green
 
                     chart1.Series[3].Points.AddXY(chartXValueCounter, DataBuffer[3]); //blue
 
-                    chart1.Series[4].Points.AddXY(chartXValueCounter, DataBuffer[4]); //violet
+                    chart1.Series[4].Points.AddXY(chartXValueCounter, DataBuffer[4]); //room temp
+                  
                     thermometer1.TempValue = DataBuffer[0];
                     thermometer2.TempValue = DataBuffer[1];
-
                     thermometer3.TempValue = DataBuffer[2];
-
                     thermometer4.TempValue = DataBuffer[3];
-
                     thermometer5.TempValue = DataBuffer[4];
 
 
@@ -929,7 +925,6 @@ namespace TemperatureSensorsV2
 
             mainCounter++;
         }
-
 
 
         private void oneSecond_Tick(object sender, EventArgs e)
