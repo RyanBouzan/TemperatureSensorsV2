@@ -30,12 +30,16 @@ namespace TemperatureSensorsV2
         private float[] DataBuffer = new float[5]; // array to hold  the temperatures
         public int LowChan = 0;
         public int HighChan = 5;
+        public int minScaled = 0;
+        public int maxScaled = 0;
         public int readDuration;
         public int chartXValueCounter = 0;
         public int resizeCounter = 0;
         public int numberOfTabs = 5;
         public int mainCounter = 0;
         public int initCounter = 0;
+        
+
 
         public string tempScaleString = "°F";
         
@@ -156,50 +160,47 @@ namespace TemperatureSensorsV2
                 }
                 else
                 {
-                    if (quickCal.Checked)
-                    {
-                        calibrateLED.OnText = "Time remaining: " + (3 - calCounter) + " second(s)";
-                        calibrateArrayTimer.Interval = 1000;
-                        Debug.WriteLine("fast");
-                    }
-                    else
-                    {
-                        calibrateLED.OnText = "Time remaining: " + (12 - calCounter * 3) + " second(s)";
-
-                        calibrateArrayTimer.Interval = 3000;
-                    }
-
-                    calibrateArrayTimer.Enabled = true;
-                        //                hascalibrated = true;
-                        calIndicator.Text = "*";
-                        calibrating = true;
+                    
+                    calIndicator.Text = "*";
+                    calibrating = true;
 
                     if (startcalibration.Text != "Show Offset")
                     {
+
+                        if (quickCal.Checked)
+                        {
+                            calibrateLED.OnText = "Time remaining: " + 4 + " second(s)";
+                            calibrateArrayTimer.Interval = 1000;
+                            Debug.WriteLine("fast");
+                        }
+                        else
+                        {
+                            calibrateLED.OnText = "Time remaining: " + 12  + " second(s)";
+
+                            calibrateArrayTimer.Interval = 3000;
+                        }
+
                         MessageBox.Show("Insure sensors have consistent conditions \n" + "Press OK to start", "IMPORTANT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         startcalibration.Text = "Abort";
                         calibrateLED.Value = true;
+                        calibrateArrayTimer.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show(calInfo, "Calibration Success! Fast calibration: " + quickCal.Checked , MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        calibrating = false;
                     }
 
                 }
             }
-            else if(calibrating && calCounter== 0)
+            else if(calibrating && calCounter != 0)
             {
+                resetcalibrationButton.PerformClick();
                 MessageBox.Show("calibration was aborted!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                startcalibration.Text = "Calibrate Sensors";
-                calibrateArrayTimer.Enabled = false;
-                calibrateLED.Value = false;
-                calIndicator.Text = "";
-                calibrating = false;
 
+               
             }
-            else
-            {
-                
-
-                MessageBox.Show(calInfo, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                calibrating = false;
-            }
+           
 
             //creates an array for each sensor (shortens calibration time from 25 seconds to 5 seconds
 
@@ -234,7 +235,8 @@ namespace TemperatureSensorsV2
             temperatureScale = TempScale.Fahrenheit;
             tempScaleString = "°F";
             tempTableTitle.Text = "Temperature (°F)";
-
+            minScaled = 60;
+            maxScaled = 95;
             thermometer1.YMinimum = 60D;
             thermometer1.YMaximum = 90D;
             thermometer2.YMinimum = 60D;
@@ -255,8 +257,8 @@ namespace TemperatureSensorsV2
             temperatureScale = TempScale.Celsius;
             tempScaleString = "°C";
             tempTableTitle.Text = "Temperature (°C)";
-
-
+            minScaled = 10;
+            maxScaled = 40;
             thermometer1.YMinimum = 15D;
             thermometer1.YMaximum = 32D;
             thermometer2.YMinimum = 15D;
@@ -278,7 +280,8 @@ namespace TemperatureSensorsV2
             temperatureScale = TempScale.Kelvin;
             tempScaleString = "°K";
             tempTableTitle.Text = "Temperature (°K)";
-
+            minScaled = 260;
+            maxScaled = 290;
             thermometer1.YMinimum = 270D;
             thermometer1.YMaximum = 300D;
             thermometer2.YMinimum = 270D;
@@ -299,7 +302,8 @@ namespace TemperatureSensorsV2
             temperatureScale = TempScale.NoScale;
             tempScaleString = "NS";
             tempTableTitle.Text = "Temperature (NS)";
-
+            minScaled = 0;
+            maxScaled = 1000;
             thermometer1.YMinimum = 270D;
             thermometer1.YMaximum = 300D;
             thermometer2.YMinimum = 270D;
@@ -437,8 +441,10 @@ namespace TemperatureSensorsV2
 
                         //TODO: optimize this for users who want to record temperatures over 99 seconds since its a substring of 2 characters
                         timeDDL.Hide();
-
-                        readDuration = Convert.ToInt32(readDurationChars.Substring(0, 2));
+                    chart.AxisY.Minimum = minScaled;
+                    chart.AxisY.Maximum = maxScaled;
+                        
+                    readDuration = Convert.ToInt32(readDurationChars.Substring(0, 2));
                         readProgress.Maximum = readDuration * 100;
                         readLED.OnText = "Waiting for data...";
                         readProgress.MarqueeAnimationSpeed = 0;
@@ -480,12 +486,19 @@ namespace TemperatureSensorsV2
 
         private void resetcalibrationButton_Click(object sender, EventArgs e)
         {
-            Array.Clear(offsetArray, 0, offsetArray.Length);
-            Array.Clear(calibrationBuffer, 0, calibrationBuffer.Length);
-            calCounter = 0;
-            MessageBox.Show("Calibration cleared");
+            if(!calibrating)
+                MessageBox.Show("Calibration cleared");
+
+
+            calibrateArrayTimer.Enabled = false;
             startcalibration.Text = "Calibrate Sensors";
             calibrating = false;
+            calibrateLED.Value = false;
+            calIndicator.Text = "";
+            calCounter = 0;
+            Array.Clear(offsetArray, 0, offsetArray.Length);
+            Array.Clear(calibrationBuffer, 0, calibrationBuffer.Length);
+
         }
 
 
@@ -592,7 +605,6 @@ namespace TemperatureSensorsV2
 
         private bool calibrateArray(int channelSwitcher)
         {
-            Debug.WriteLine(calibrateArrayTimer.Interval);
 
 
             bool blnSuccess = false;
@@ -652,9 +664,9 @@ namespace TemperatureSensorsV2
         private void calibrateArrayTimer_Tick(object sender, EventArgs e)
         {
             calInfo = "";
-           // Debug.WriteLine("calcounter: " + calCounter);
+            // Debug.WriteLine("calcounter: " + calCounter);
 
-           
+
             calibrateArrayTimer.Enabled = false;
 
 
@@ -662,11 +674,14 @@ namespace TemperatureSensorsV2
                  calibrateLED.OnText = "Time remaining: " + (3 - calCounter) + " second(s)";
             else
                 calibrateLED.OnText = "Time remaining: " + (12 - calCounter * 3) + " second(s)";
-            //  Debug.WriteLine("calCounter = " + calCounter + " secondaryCounter = " + secondaryCalCounter);
+
+
+
             if (calibrateArray(calCounter))
             {
                 calibrateArrayTimer.Enabled = true;
             }
+
 
             if (calCounter == HighChan-1)
             {
@@ -715,6 +730,7 @@ namespace TemperatureSensorsV2
                 calibrateArrayTimer.Enabled = false;
                 calibrateLED.Value = false;
                 calCounter = -1;
+                calibrating = false;
                 MessageBox.Show(calInfo, "Calibration Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
            
@@ -752,7 +768,7 @@ namespace TemperatureSensorsV2
 
 
             //if a calibration has been performed, offset each databuffer value by amount x
-            if (calibrating)
+            if (calIndicator.Text == "*")
             {
 
                 for (int h = 0; h < DataBuffer.Length; h++)
@@ -842,8 +858,8 @@ namespace TemperatureSensorsV2
                     chart.AxisX.Minimum = 0;
                     chart.AxisX.Maximum = readDuration;
                     readLED.Value = false;
-                    chart.AxisY.Minimum = 60;
-                    chart.AxisY.Maximum = 100;
+                    chart.AxisY.Minimum = minScaled;
+                    chart.AxisY.Maximum = maxScaled;
                     readArrayTimer.Enabled = false;
 
 

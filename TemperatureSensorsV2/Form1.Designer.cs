@@ -30,9 +30,9 @@ namespace TemperatureSensorsV2
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.optionsButton = new System.Windows.Forms.Button();
@@ -164,7 +164,7 @@ namespace TemperatureSensorsV2
             this.optionsButton.BackColor = System.Drawing.Color.White;
             this.optionsButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.optionsButton.FlatAppearance.BorderSize = 0;
-            this.optionsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.optionsButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.AppWorkspace;
             this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.optionsButton.Location = new System.Drawing.Point(1159, 6);
             this.optionsButton.Name = "optionsButton";
@@ -270,7 +270,7 @@ namespace TemperatureSensorsV2
             this.tempTableTitle.AutoSize = true;
             this.tempTableTitle.Font = new System.Drawing.Font("Arial", 9F);
             this.tempTableTitle.ForeColor = System.Drawing.Color.DimGray;
-            this.tempTableTitle.Location = new System.Drawing.Point(550, 171);
+            this.tempTableTitle.Location = new System.Drawing.Point(535, 171);
             this.tempTableTitle.Name = "tempTableTitle";
             this.tempTableTitle.Size = new System.Drawing.Size(100, 15);
             this.tempTableTitle.TabIndex = 24;
@@ -280,7 +280,7 @@ namespace TemperatureSensorsV2
             // 
             this.calIndicator.AutoSize = true;
             this.calIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calIndicator.Location = new System.Drawing.Point(639, 168);
+            this.calIndicator.Location = new System.Drawing.Point(645, 168);
             this.calIndicator.Name = "calIndicator";
             this.calIndicator.Size = new System.Drawing.Size(0, 24);
             this.calIndicator.TabIndex = 23;
@@ -380,20 +380,20 @@ namespace TemperatureSensorsV2
             // 
             // chart1
             // 
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea9.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea9.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea9.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.chart1.Legends.Add(legend9);
             this.chart1.Location = new System.Drawing.Point(502, 251);
             this.chart1.Name = "chart1";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series9.BorderWidth = 3;
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            this.chart1.Series.Add(series9);
             this.chart1.Size = new System.Drawing.Size(751, 350);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
