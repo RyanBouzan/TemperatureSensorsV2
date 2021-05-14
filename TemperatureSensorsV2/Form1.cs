@@ -1,15 +1,18 @@
-﻿using System;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿/*
+ * (C) Copyright 2021 Ryan Bouzan and others.
+ * Software for Herschel IR Demo - Spring 2021
+ * 
+ * 
+ * Contributors:
+ *     Ryan Bouzan
+ */
+
+
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+
 using MccDaq;
 
 namespace TemperatureSensorsV2
@@ -19,22 +22,40 @@ namespace TemperatureSensorsV2
         public MccBoard DaqBoard = new MccBoard(0);
         private ErrorInfo ULStat;
         private int UsesEXPs = 0;
-        private float[] DataBuffer = new float[5]; // array to hold  the temperatures
-        private float[] calibrationBuffer = new float[5];
+
+        public TempScale temperatureScale = TempScale.Fahrenheit;
         public Label[] lblShowData;
+        Random rnd = new Random();
+
+        private float[] DataBuffer = new float[5]; // array to hold  the temperatures
+        public int LowChan = 0;
         public int HighChan = 5;
-        public string calInfo = "";
-        private int chartXValueCounter = 0;
+        public int readDuration;
+        public int chartXValueCounter = 0;
+        public int resizeCounter = 0;
+        public int numberOfTabs = 5;
+        public int mainCounter = 0;
+        public int initCounter = 0;
+
+        public string tempScaleString = "°F";
+        
+        public bool errorOverride = false;
         public bool isReading = false;
         public bool isChecked = false;
-        public bool hasReset = false;
-     //   public bool hascalibrated = false;
+        
+        #region Calibration Variables
+
+        public string calInfo = "";
+
         public bool calibrating;
-        // public int calibrationChannel;
-        public TempScale temperatureScale = TempScale.Fahrenheit;
-        public string tempScaleString = "°F";
+
+        public int calCounter = 0;
+
         public float tempCal;
-        public float[] tempCalArray = new float[5];
+        public float sample = 0;
+
+
+        private float[] calibrationBuffer = new float[5];
         public float[] offsetArray = new float[5];
 
         public float[] speedArray = new float[25];
@@ -43,19 +64,7 @@ namespace TemperatureSensorsV2
         public float[] calArrayColor2 = new float[5];
         public float[] calArrayColor3 = new float[5];
         public float[] calArrayColor4 = new float[5];
-
-        public int numberOfTabs = 5;
-        public int LowChan = 0;
-        public int resizeCounter = 0;
-        public int calCounter = 0;
-        public int secondaryCalCounter = 0;
-        public int mainCounter = 0;
-        public int readDuration;
-        float sample = 0;
-        Random rnd = new Random();
-        public bool errorOverride = false;
-        public int initCounter = 0;
-
+        #endregion
 
         public Form1()
         {
@@ -116,6 +125,7 @@ namespace TemperatureSensorsV2
 
         private void sampleButton_Click(object sender, EventArgs e)
         {
+            //gets a temperature value from a random sensor
             sample = 0;
             MccDaq.ThermocoupleOptions Options = 0;
             DaqBoard.TIn(rnd.Next(0, 4), temperatureScale, out sample, Options);
@@ -189,7 +199,6 @@ namespace TemperatureSensorsV2
 
                 MessageBox.Show(calInfo, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 calibrating = false;
-                Debug.WriteLine(secondaryCalCounter);
             }
 
             //creates an array for each sensor (shortens calibration time from 25 seconds to 5 seconds
@@ -207,7 +216,7 @@ namespace TemperatureSensorsV2
             if (isChecked)
             {
                 tabControl1.Location = new System.Drawing.Point(-9, -31);
-                Debug.WriteLine("showing tabset");
+                Debug.WriteLine("showing tabset!");
             }
             else
             {
@@ -225,6 +234,20 @@ namespace TemperatureSensorsV2
             temperatureScale = TempScale.Fahrenheit;
             tempScaleString = "°F";
             tempTableTitle.Text = "Temperature (°F)";
+
+            thermometer1.YMinimum = 60D;
+            thermometer1.YMaximum = 90D;
+            thermometer2.YMinimum = 60D;
+            thermometer2.YMaximum = 90D;
+            thermometer3.YMinimum = 60D;
+            thermometer3.YMaximum = 90D;
+            thermometer4.YMinimum = 60D;
+            thermometer4.YMaximum = 90D;
+            thermometer5.YMinimum = 60D;
+            thermometer5.YMaximum = 90D;
+
+            chart1.ChartAreas[0].AxisY.Title = "Temperature (°F)";
+
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -232,6 +255,20 @@ namespace TemperatureSensorsV2
             temperatureScale = TempScale.Celsius;
             tempScaleString = "°C";
             tempTableTitle.Text = "Temperature (°C)";
+
+
+            thermometer1.YMinimum = 15D;
+            thermometer1.YMaximum = 32D;
+            thermometer2.YMinimum = 15D;
+            thermometer2.YMaximum = 32D;
+            thermometer3.YMinimum = 15D;
+            thermometer3.YMaximum = 32D;
+            thermometer4.YMinimum = 15D;
+            thermometer4.YMaximum = 32D;
+            thermometer5.YMinimum = 15D;
+            thermometer5.YMaximum = 32D;
+
+            chart1.ChartAreas[0].AxisY.Title = "Temperature (°C)";
 
         }
 
@@ -242,6 +279,19 @@ namespace TemperatureSensorsV2
             tempScaleString = "°K";
             tempTableTitle.Text = "Temperature (°K)";
 
+            thermometer1.YMinimum = 270D;
+            thermometer1.YMaximum = 300D;
+            thermometer2.YMinimum = 270D;
+            thermometer2.YMaximum = 300D;
+            thermometer3.YMinimum = 270D;
+            thermometer3.YMaximum = 300D;
+            thermometer4.YMinimum = 270D;
+            thermometer4.YMaximum = 300D;
+            thermometer5.YMinimum = 270D;
+            thermometer5.YMaximum = 300D;
+
+            chart1.ChartAreas[0].AxisY.Title = "Temperature (°K)";
+
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
@@ -249,6 +299,20 @@ namespace TemperatureSensorsV2
             temperatureScale = TempScale.NoScale;
             tempScaleString = "NS";
             tempTableTitle.Text = "Temperature (NS)";
+
+            thermometer1.YMinimum = 270D;
+            thermometer1.YMaximum = 300D;
+            thermometer2.YMinimum = 270D;
+            thermometer2.YMaximum = 300D;
+            thermometer3.YMinimum = 270D;
+            thermometer3.YMaximum = 300D;
+            thermometer4.YMinimum = 270D;
+            thermometer4.YMaximum = 300D;
+            thermometer5.YMinimum = 270D;
+            thermometer5.YMaximum = 300D;
+
+            chart1.ChartAreas[0].AxisY.Title = "Temperature (?)";
+
         }
 
         #endregion
@@ -391,7 +455,14 @@ namespace TemperatureSensorsV2
             for (int i = 0; i < 5; i++)
             {
                 chart1.Series[i].Points.Clear();
+                lblShowData[i].Text = "";
             }
+
+            thermometer1.TempValue = 0;
+            thermometer2.TempValue = 0;
+            thermometer3.TempValue = 0;
+            thermometer4.TempValue = 0;
+            thermometer5.TempValue = 0;
 
             timeDDL.Show();
             testButton.Show();
@@ -404,6 +475,7 @@ namespace TemperatureSensorsV2
             isReading = !isReading;
             chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth = 1;
             chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth = 1;
+            
         }
 
         private void resetcalibrationButton_Click(object sender, EventArgs e)
@@ -441,7 +513,7 @@ namespace TemperatureSensorsV2
             chart.AxisY.Interval = 1;
 
             chart.AxisX.Title = "Time (s)";
-            chart.AxisY.Title = "Temperature (f)";
+            chart.AxisY.Title = "Temperature (°F)";
 
             chart1.Series[0].Name = "Room Temperature";
             chart1.Series[0].Color = Color.Black;

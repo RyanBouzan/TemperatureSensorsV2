@@ -30,25 +30,18 @@ namespace TemperatureSensorsV2
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.optionsButton = new System.Windows.Forms.Button();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.tablePage = new System.Windows.Forms.TabPage();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.tempTableTitle = new System.Windows.Forms.Label();
             this.calIndicator = new System.Windows.Forms.Label();
             this.resetButton = new System.Windows.Forms.Button();
@@ -72,8 +65,8 @@ namespace TemperatureSensorsV2
             this.thermometer3 = new BERGtools.Thermometer();
             this.thermometer2 = new BERGtools.Thermometer();
             this.thermometer1 = new BERGtools.Thermometer();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.optionsTab = new System.Windows.Forms.TabPage();
+            this.reInitBoard = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.quickCal = new System.Windows.Forms.CheckBox();
             this.noErrorBox = new System.Windows.Forms.CheckBox();
@@ -100,30 +93,36 @@ namespace TemperatureSensorsV2
             this.oneSecond = new System.Windows.Forms.Timer(this.components);
             this.returnButton = new System.Windows.Forms.Button();
             this.prevButton = new System.Windows.Forms.Button();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.nextButton = new System.Windows.Forms.Button();
             this.demoButton = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.reInitBoard = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.tablePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.optionsTab.SuspendLayout();
             this.panel1.SuspendLayout();
             this.TSpanel.SuspendLayout();
             this.calPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             this.SuspendLayout();
@@ -174,26 +173,6 @@ namespace TemperatureSensorsV2
             this.optionsButton.UseVisualStyleBackColor = false;
             this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = global::TemperatureSensorsV2.Properties.Resources.ClipartKey_1648060;
-            this.pictureBox7.Location = new System.Drawing.Point(347, 274);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(536, 317);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 3;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::TemperatureSensorsV2.Properties.Resources.DRS_Daylight_Solutions_Logo_Red_300_DPI;
-            this.pictureBox2.Location = new System.Drawing.Point(151, 44);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(908, 99);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Window;
@@ -219,16 +198,6 @@ namespace TemperatureSensorsV2
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::TemperatureSensorsV2.Properties.Resources.HerschelTab;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(1264, 663);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.pictureBox4);
@@ -239,19 +208,6 @@ namespace TemperatureSensorsV2
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox4.Image = global::TemperatureSensorsV2.Properties.Resources.Systems;
-            this.pictureBox4.Location = new System.Drawing.Point(3, 0);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(1262, 633);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
             // 
             // tabPage4
             // 
@@ -264,16 +220,6 @@ namespace TemperatureSensorsV2
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::TemperatureSensorsV2.Properties.Resources.mechText;
-            this.pictureBox5.Location = new System.Drawing.Point(3, 0);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(1261, 660);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
-            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.pictureBox6);
@@ -285,19 +231,8 @@ namespace TemperatureSensorsV2
             this.tabPage5.Text = "tabPage5";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::TemperatureSensorsV2.Properties.Resources.mechImages;
-            this.pictureBox6.Location = new System.Drawing.Point(3, 0);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(1261, 660);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
-            // 
             // tablePage
             // 
-            this.tablePage.Controls.Add(this.textBox9);
             this.tablePage.Controls.Add(this.tempTableTitle);
             this.tablePage.Controls.Add(this.calIndicator);
             this.tablePage.Controls.Add(this.resetButton);
@@ -330,21 +265,14 @@ namespace TemperatureSensorsV2
             this.tablePage.Text = "Demo";
             this.tablePage.UseVisualStyleBackColor = true;
             // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(676, 145);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(68, 20);
-            this.textBox9.TabIndex = 25;
-            this.textBox9.Text = "room temp";
-            // 
             // tempTableTitle
             // 
             this.tempTableTitle.AutoSize = true;
-            this.tempTableTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tempTableTitle.Location = new System.Drawing.Point(532, 173);
+            this.tempTableTitle.Font = new System.Drawing.Font("Arial", 9F);
+            this.tempTableTitle.ForeColor = System.Drawing.Color.DimGray;
+            this.tempTableTitle.Location = new System.Drawing.Point(550, 171);
             this.tempTableTitle.Name = "tempTableTitle";
-            this.tempTableTitle.Size = new System.Drawing.Size(104, 16);
+            this.tempTableTitle.Size = new System.Drawing.Size(100, 15);
             this.tempTableTitle.TabIndex = 24;
             this.tempTableTitle.Text = "Temperature (°F)";
             // 
@@ -452,18 +380,20 @@ namespace TemperatureSensorsV2
             // 
             // chart1
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chart1.Legends.Add(legend7);
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(502, 251);
             this.chart1.Name = "chart1";
-            series7.BorderWidth = 3;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.chart1.Series.Add(series7);
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(751, 350);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -613,16 +543,6 @@ namespace TemperatureSensorsV2
             this.thermometer1.YMinimum = 60D;
             this.thermometer1.YTicks = 5;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::TemperatureSensorsV2.Properties.Resources.labelTable;
-            this.pictureBox1.Location = new System.Drawing.Point(527, 86);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(597, 159);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            // 
             // optionsTab
             // 
             this.optionsTab.Controls.Add(this.reInitBoard);
@@ -639,6 +559,18 @@ namespace TemperatureSensorsV2
             this.optionsTab.Text = "options";
             this.optionsTab.UseVisualStyleBackColor = true;
             // 
+            // reInitBoard
+            // 
+            this.reInitBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reInitBoard.Location = new System.Drawing.Point(60, 510);
+            this.reInitBoard.Name = "reInitBoard";
+            this.reInitBoard.Size = new System.Drawing.Size(202, 49);
+            this.reInitBoard.TabIndex = 25;
+            this.reInitBoard.TabStop = false;
+            this.reInitBoard.Text = "Reinitialize Board";
+            this.reInitBoard.UseVisualStyleBackColor = true;
+            this.reInitBoard.Click += new System.EventHandler(this.reInitBoard_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.quickCal);
@@ -653,6 +585,8 @@ namespace TemperatureSensorsV2
             // quickCal
             // 
             this.quickCal.AutoSize = true;
+            this.quickCal.Checked = true;
+            this.quickCal.CheckState = System.Windows.Forms.CheckState.Checked;
             this.quickCal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quickCal.Location = new System.Drawing.Point(13, 119);
             this.quickCal.Name = "quickCal";
@@ -931,6 +865,79 @@ namespace TemperatureSensorsV2
             this.prevButton.UseVisualStyleBackColor = false;
             this.prevButton.Click += new System.EventHandler(this.Switch_Tab);
             // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::TemperatureSensorsV2.Properties.Resources.ClipartKey_1648060;
+            this.pictureBox7.Location = new System.Drawing.Point(347, 274);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(536, 317);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 3;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::TemperatureSensorsV2.Properties.Resources.DRS_Daylight_Solutions_Logo_Red_300_DPI;
+            this.pictureBox2.Location = new System.Drawing.Point(151, 44);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(908, 99);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::TemperatureSensorsV2.Properties.Resources.HerschelTab;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(1264, 663);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox4.Image = global::TemperatureSensorsV2.Properties.Resources.Systems;
+            this.pictureBox4.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(1262, 633);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::TemperatureSensorsV2.Properties.Resources.mechText;
+            this.pictureBox5.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(1261, 660);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 0;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::TemperatureSensorsV2.Properties.Resources.mechImages;
+            this.pictureBox6.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(1261, 660);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TemperatureSensorsV2.Properties.Resources.labelTable;
+            this.pictureBox1.Location = new System.Drawing.Point(527, 86);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(597, 159);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
             // nextButton
             // 
             this.nextButton.BackColor = System.Drawing.SystemColors.Window;
@@ -959,18 +966,6 @@ namespace TemperatureSensorsV2
             this.demoButton.UseVisualStyleBackColor = false;
             this.demoButton.Click += new System.EventHandler(this.demoButton_Click);
             // 
-            // reInitBoard
-            // 
-            this.reInitBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reInitBoard.Location = new System.Drawing.Point(60, 510);
-            this.reInitBoard.Name = "reInitBoard";
-            this.reInitBoard.Size = new System.Drawing.Size(202, 49);
-            this.reInitBoard.TabIndex = 25;
-            this.reInitBoard.TabStop = false;
-            this.reInitBoard.Text = "Reinitialize Board";
-            this.reInitBoard.UseVisualStyleBackColor = true;
-            this.reInitBoard.Click += new System.EventHandler(this.reInitBoard_Click);
-            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1262, 764);
@@ -985,20 +980,13 @@ namespace TemperatureSensorsV2
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.tablePage.ResumeLayout(false);
             this.tablePage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.optionsTab.ResumeLayout(false);
             this.optionsTab.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1007,6 +995,13 @@ namespace TemperatureSensorsV2
             this.TSpanel.PerformLayout();
             this.calPanel.ResumeLayout(false);
             this.calPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             this.ResumeLayout(false);
@@ -1085,7 +1080,6 @@ namespace TemperatureSensorsV2
         private System.Windows.Forms.Panel calPanel;
         private System.Windows.Forms.Label tempTableTitle;
         private System.Windows.Forms.CheckBox quickCal;
-        private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Button reInitBoard;
     }
 }
