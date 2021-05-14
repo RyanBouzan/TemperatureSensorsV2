@@ -528,8 +528,8 @@ namespace TemperatureSensorsV2
             chart.AxisX.Title = "Time (s)";
             chart.AxisY.Title = "Temperature (°F)";
 
-            chart1.Series[0].Name = "Room Temperature";
-            chart1.Series[0].Color = Color.Black;
+            chart1.Series[0].Name = "Infrared";
+            chart1.Series[0].Color = Color.FromArgb(128, 0, 0); //maroon
             chart1.Series[0].BorderWidth = 3;
 
             chart1.Series.Add("Blue");
@@ -547,10 +547,10 @@ namespace TemperatureSensorsV2
             chart1.Series[3].Color = Color.Red;
             chart1.Series[3].BorderWidth = 3;
 
-            chart1.Series.Add("InfraRed");
+            chart1.Series.Add("Room Temperature");
             chart1.Series[4].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series[4].Color = Color.FromArgb(128, 0, 0); //maroon
             chart1.Series[4].BorderWidth = 3;
+            chart1.Series[4].Color = Color.Black;
 
 
         }
