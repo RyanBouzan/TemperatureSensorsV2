@@ -17,6 +17,6 @@ Notes:
 - Make sure to run InstaCal and set up the DAQ configuration file before running our program. It will not work without it!
 - We are using RTD thermosensors. Make sure to set this in InstaCal. The current configuration has channels 0-4 on [2 wire 2 sensor RTD] , and channel 5 has [1 wire 1 sensor RTD]
 - Select  *Show Connections* in InstaCal to see wiring diagram
-- See trello board for official documentation of this program and guides for software neccesary software installation
+- See trello board for official documentation of this program and guides for neccesary software installation
 
 
